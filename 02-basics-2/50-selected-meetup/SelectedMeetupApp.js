@@ -7,22 +7,19 @@ export default defineComponent({
     setup() {
         const meetupId = ref(1);
         const currentMeetup = ref(null);
-        async function getMeetupInfo(id) {
-            return await getMeetup(id)
-        }
 
         onMounted(async () => {
-            currentMeetup.value = await getMeetupInfo(meetupId.value);
+            currentMeetup.value = await getMeetup(meetupId.value);
 
         })
 
         watch(meetupId, async () => {
-            currentMeetup.value = await getMeetupInfo(meetupId.value);
+            currentMeetup.value = await getMeetup(meetupId.value);
         })
 
 
         return {
-            getMeetupInfo,
+            getMeetup,
             meetupId,
             currentMeetup
         }
