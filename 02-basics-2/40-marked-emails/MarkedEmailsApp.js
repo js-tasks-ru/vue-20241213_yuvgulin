@@ -36,13 +36,13 @@ export default defineComponent({
         const search = ref('');
 
         const filteredEmails = computed(() => {
-            if (!search.value) return []
-            return emails.filter(item => item.toLowerCase().includes(search.value.toLowerCase()))
+            const arr = [];
+            emails.forEach(email => arr.push({emailValue: email, isFlagged: search.value && email.toLowerCase().includes(search.value.toLowerCase())}));
+            return arr;
         })
 
         return {
             search,
-            emails,
             filteredEmails
         }
     },
@@ -54,11 +54,11 @@ export default defineComponent({
             </div>
             <ul aria-label="Emails">
                 <li
-                    v-for="(email, index) in emails"
+                    v-for="(email, index) in filteredEmails"
                     :key="index"
-                    :class="{'marked': filteredEmails.includes(email)}"
+                    :class="{'marked': email.isFlagged}"
                 >
-                    {{ email }}
+                    {{ email.emailValue }}
                 </li>
             </ul>
         </div>
