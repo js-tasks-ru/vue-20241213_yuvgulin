@@ -107,7 +107,6 @@ export default defineComponent({
                     <h1 v-else class="meetup-cover__title">Загрузка</h1>
                 </div>
             </div>
-            {{ currentMeetup }}
         </div>
     `,
 })
