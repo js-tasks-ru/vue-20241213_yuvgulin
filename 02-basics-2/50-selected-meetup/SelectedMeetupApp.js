@@ -36,60 +36,20 @@ export default defineComponent({
                 >Предыдущий</button>
 
                 <div class="radio-group" role="radiogroup">
-                    <div class="radio-group__button">
+                    <div
+                        v-for="i in 5"
+                        :key="i"
+                        class="radio-group__button"
+                    >
                         <input
                             v-model.number="meetupId"
-                            id="meetup-id-1"
+                            :id="'meetup-id-' + i"
                             class="radio-group__input"
                             type="radio"
                             name="meetupId"
-                            value="1"
+                            :value="i"
                         />
-                        <label for="meetup-id-1" class="radio-group__label">1</label>
-                    </div>
-                    <div class="radio-group__button">
-                        <input
-                            v-model.number="meetupId"
-                            id="meetup-id-2"
-                            class="radio-group__input"
-                            type="radio"
-                            name="meetupId"
-                            value="2"
-                        />
-                        <label for="meetup-id-2" class="radio-group__label">2</label>
-                    </div>
-                    <div class="radio-group__button">
-                        <input
-                            v-model.number="meetupId"
-                            id="meetup-id-3"
-                            class="radio-group__input"
-                            type="radio"
-                            name="meetupId"
-                            value="3"
-                        />
-                        <label for="meetup-id-3" class="radio-group__label">3</label>
-                    </div>
-                    <div class="radio-group__button">
-                        <input
-                            v-model.number="meetupId"
-                            id="meetup-id-4"
-                            class="radio-group__input"
-                            type="radio"
-                            name="meetupId"
-                            value="4"
-                        />
-                        <label for="meetup-id-4" class="radio-group__label">4</label>
-                    </div>
-                    <div class="radio-group__button">
-                        <input
-                            v-model.number="meetupId"
-                            id="meetup-id-5"
-                            class="radio-group__input"
-                            type="radio"
-                            name="meetupId"
-                            value="5"
-                        />
-                        <label for="meetup-id-5" class="radio-group__label">5</label>
+                        <label :for="'meetup-id-' + i" class="radio-group__label">{{ i }}</label>
                     </div>
                 </div>
 
