@@ -5,7 +5,7 @@ function pressureConvert(pressure) {
 }
 
 export default defineComponent({
-    name: 'WeatherCard',
+    name: 'WeatherCardDetails',
 
     props: {
         clouds: {

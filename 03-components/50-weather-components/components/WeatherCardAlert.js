@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: 'WeatherCard',
+    name: 'WeatherCardAlert',
 
     props: {
         alert: {
