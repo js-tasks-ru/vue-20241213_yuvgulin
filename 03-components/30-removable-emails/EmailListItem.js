@@ -1,24 +1,26 @@
-import { defineComponent } from 'vue'
+import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: 'EmailListItem',
+    name: 'EmailListItem',
 
-  props: {
-    email: {
-      type: String,
-      required: true,
+    props: {
+        email: {
+            type: String,
+            required: true,
+        },
+
+        marked: {
+            type: Boolean,
+            default: false,
+        },
     },
 
-    marked: {
-      type: Boolean,
-      default: false,
-    },
-  },
+    emits: ['click-del'],
 
-  template: `
-    <li :class="{ marked }">
-      {{ email }}
-      <button type="button" aria-label="Удалить" @click.stop>❌</button>
-    </li>
-  `,
+    template: `
+        <li :class="{ marked }">
+            {{ email }}
+            <button type="button" aria-label="Удалить" @click.stop="$emit('click-del')">❌</button>
+        </li>
+    `,
 })
