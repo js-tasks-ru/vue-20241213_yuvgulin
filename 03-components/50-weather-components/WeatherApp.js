@@ -25,7 +25,7 @@ export default defineComponent({
             <h1 class="title">Погода в Средиземье</h1>
 
             <ul class="weather-list unstyled-list">
-                <weather-card
+                <WeatherCard
                     v-for="(weatherItem, index) in weatherData"
                     :data="weatherItem"
                     :key="index"

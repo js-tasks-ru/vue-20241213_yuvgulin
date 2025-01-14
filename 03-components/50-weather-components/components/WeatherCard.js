@@ -37,7 +37,7 @@ export default defineComponent({
 
     template: `
         <li :class="{'weather-card--night': !isDayNow(data.current.dt, data.current.sunrise, data.current.sunset)}">
-            <weather-card-alert v-if="data.alert" :alert="data.alert" />
+            <WeatherCardAlert v-if="data.alert" :alert="data.alert" />
 
             <div>
                 <h2 class="weather-card__name">
@@ -48,13 +48,13 @@ export default defineComponent({
                 </div>
             </div>
 
-            <weather-card-conditions
+            <WeatherCardConditions
                 :id="data.current.weather.id"
                 :temp="data.current.temp"
                 :title="data.current.weather.description"
             />
 
-            <weather-card-details
+            <WeatherCardDetails
                 :clouds="data.current.clouds"
                 :humidity="data.current.humidity"
                 :pressure="data.current.pressure"
