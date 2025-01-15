@@ -2,27 +2,30 @@ import { defineComponent } from 'vue'
 import EmailListItem from './EmailListItem.js'
 
 export default defineComponent({
-  name: 'EmailList',
+    name: 'EmailList',
 
-  components: {
-    EmailListItem,
-  },
-
-  props: {
-    emails: {
-      type: Array,
-      required: true,
+    components: {
+        EmailListItem,
     },
-  },
 
-  template: `
-    <ul class="emails-list unstyled-list" aria-label="Emails">
-      <EmailListItem
-        v-for="({ email, isMarked }, index) in emails"
-        :key="email"
-        :email="email"
-        :marked="isMarked"
-      />
-    </ul>
-  `,
+    props: {
+        emails: {
+            type: Array,
+            required: true,
+        },
+    },
+
+    emits: ['remove'],
+
+    template: `
+        <ul class="emails-list unstyled-list" aria-label="Emails">
+            <EmailListItem
+                v-for="({ email, isMarked }, index) in emails"
+                :key="email"
+                :email="email"
+                :marked="isMarked"
+                @click-del="$emit('remove', index)"
+            />
+        </ul>
+    `,
 })
