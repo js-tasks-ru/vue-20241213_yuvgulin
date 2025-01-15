@@ -8,7 +8,7 @@ import MeetupInfo from './MeetupInfo.vue'
 defineProps({
     meetup: {
         type: Object,
-        require: true
+        required: true
     }
 })
 </script>
