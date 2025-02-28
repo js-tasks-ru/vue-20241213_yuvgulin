@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { reactive, ref, toRefs } from "vue";
-import type { Ref } from 'vue';
+import { ref } from "vue";
 
-type SelectValue = null | number;
+type SelectValue = '' | number;
+
 type SingleOption = {
     label: string,
     value: number
 };
 
-const tempTest = reactive({
-    select1: null as SelectValue,
-    select2: null as SelectValue,
-    select3: null as SelectValue,
-    select4: null as SelectValue,
-})
+const select1 = ref<SelectValue>('')
+const select2 = ref<SelectValue>('')
+const select3 = ref<SelectValue>('')
+const select4 = ref<SelectValue>('')
 
-const {select1, select2, select3, select4} = toRefs(tempTest);
-
-const options: Ref<SingleOption[]> = ref ([
+const options = ref<SingleOption[]>([
     {label: 'one', value: 1},
     {label: 'two', value: 2},
     {label: 'three', value: 3},
