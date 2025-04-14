@@ -1,14 +1,48 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import {type Slot} from "vue";
+
+const props = defineProps<{
+    for?: string
+    label?: string
+    description?: string
+    hint?: string
+    showHint?: boolean
+    invalid?: boolean
+}>()
+
+defineSlots<{
+    default?: Slot
+    label?: Slot
+    description?: Slot
+}>();
+</script>
 
 <template>
-  <div class="form-group">
-    <div class="form-group__label-wrapper">
-      <label for="FOR" class="form-group__label">LABEL</label>
-      <div class="form-group__description">DESCRIPTION</div>
+    <div class="form-group">
+        <div class="form-group__label-wrapper">
+            <label :for="props.for" class="form-group__label">
+                <slot name="label">{{ label }}</slot>
+            </label>
+
+            <div class="form-group__description">
+                <slot name="description">
+                    {{ description }}
+                </slot>
+            </div>
+        </div>
+
+        <div class="form-group__control">
+            <slot/>
+        </div>
+
+        <div
+            v-if="hint !== undefined"
+            class="form-group__hint"
+            :class="{'form-group__hint--invalid': invalid}"
+        >
+            {{ showHint || invalid ? hint : '' }}
+        </div>
     </div>
-    <div class="form-group__control">CONTENT</div>
-    <div class="form-group__hint form-group__hint--invalid">HINT | ERROR</div>
-  </div>
 </template>
 
 <style scoped>
@@ -17,25 +51,25 @@
 }
 
 .form-group__label-wrapper {
-  margin-block-end: var(--spacing-small);
+    margin-block-end: var(--spacing-small);
 }
 
 .form-group__label {
-  display: block;
-  font-size: var(--font-size-control);
+    display: block;
+    font-size: var(--font-size-control);
 }
 
 .form-group__description {
-  color: var(--color-dimmed);
+    color: var(--color-dimmed);
 }
 
 .form-group__hint {
-  font-size: var(--font-size-small);
-  color: var(--color-dimmed);
-  min-height: 1lh;
+    font-size: var(--font-size-small);
+    color: var(--color-dimmed);
+    min-height: 1lh;
 
-  &.form-group__hint--invalid {
-    color: var(--color-danger);
-  }
+    &.form-group__hint--invalid {
+        color: var(--color-danger);
+    }
 }
 </style>
